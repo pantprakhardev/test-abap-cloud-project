@@ -1,0 +1,40 @@
+CLASS zclass_basic_view_01 DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zclass_basic_view_01 IMPLEMENTATION.
+  METHOD if_oo_adt_classrun~main.
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Consuming basic CDS view
+*    SELECT *
+*    FROM zcds_basic_view_01
+*    INTO TABLE @DATA(lt_itab).
+*
+*    out->write( lt_basic ).
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Consuming basic CDS view with parameters
+*    SELECT *
+*    FROM zcds_basic_view_01( p_ccode = 'US' )
+*    INTO TABLE @DATA(lt_params).
+*
+*    out->write( lt_params ).
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Consuming basic CDS view with association
+*    SELECT BookingId, BookingDate, FlightDate, FlightPrice
+    SELECT BookingId, BookingDate, FlightDate, CurrencyCode, FlightPrice, SeatsMax, SeatsOccupied, SeatsAvailable
+    FROM zcds_basic_view_01
+    WHERE BookingDate GT @sy-datum
+    AND CurrencyCode = 'JPY'
+    ORDER BY BookingDate
+    INTO TABLE @DATA(lt_asso).
+
+    out->write( lt_asso ).
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  ENDMETHOD.
+ENDCLASS.
