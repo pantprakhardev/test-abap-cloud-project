@@ -19,7 +19,11 @@ semantic annotations, arithmetic expressions, and ABAP class consumption.
 - **Association** — Joins `/dmo/flight` to enrich booking data with seat/plane info
 - **Arithmetic field** — `SeatsMax - SeatsOccupied as SeatsAvailable` (derived column)
 - **Semantic annotation** — Links `FlightPrice` to `CurrencyCode`
-
+- **CDS Parameters** *(commented)* — View accepts an input parameter `p_ccode` (country code),
+  consumed in class as `FROM zcds_basic_view_01( p_ccode = 'US' )`
+- **WHERE in CDS** *(commented)* — Filter can be pushed into the view definition itself
+  (e.g. `WHERE country_code = $parameters.p_ccode` or hardcoded `= 'US'`),
+  rather than in the consuming ABAP SELECT
 ---
 
 ## How to Run
