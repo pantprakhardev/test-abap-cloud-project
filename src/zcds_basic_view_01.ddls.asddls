@@ -19,7 +19,11 @@ define view ZCDS_BASIC_VIEW_01
       @Semantics.amount.currencyCode : 'CurrencyCode'
       booking.flight_price                       as FlightPrice,
       booking.currency_code                      as CurrencyCode,
-      booking.booking_status                     as BookingStatus,
+      case booking.booking_status
+      when 'B' then 'Booked'
+      when 'N' then 'Not Booked'
+      else 'Unknown'
+      end                                        as BookingStatus,
       _flight.plane_type_id                      as PlaneTypeId,
       _flight.seats_max                          as SeatsMax,
       _flight.seats_occupied                     as SeatsOccupied,

@@ -27,9 +27,10 @@ CLASS zclass_basic_view_01 IMPLEMENTATION.
 *    out->write( lt_params ).
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Consuming basic CDS view with association
 *    SELECT BookingId, BookingDate, FlightDate, FlightPrice
-    SELECT BookingId, BookingDate, FlightDate, CurrencyCode, FlightPrice, SeatsMax, SeatsOccupied, SeatsAvailable
+    SELECT BookingId, BookingDate, BookingStatus, FlightDate, CurrencyCode, FlightPrice, SeatsMax, SeatsOccupied, SeatsAvailable
     FROM zcds_basic_view_01
-    WHERE BookingDate GT @sy-datum
+*    WHERE BookingDate GT @sy-datum " sy-datum is old variant - outdated in ABAP Cloud
+    WHERE BookingDate GT @( cl_abap_context_info=>get_system_date( ) )
     AND CurrencyCode = 'JPY'
     ORDER BY BookingDate
     INTO TABLE @DATA(lt_asso).
