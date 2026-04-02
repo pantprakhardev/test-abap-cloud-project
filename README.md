@@ -24,6 +24,7 @@ semantic annotations, arithmetic expressions, and ABAP class consumption.
 - **WHERE in CDS** *(commented)* — Filter can be pushed into the view definition itself
   (e.g. `WHERE country_code = $parameters.p_ccode` or hardcoded `= 'US'`),
   rather than in the consuming ABAP SELECT
+- **CASE expression** — Derives a readable `BookingStatusLabel` (e.g. `'Booked'`, `'Not Booked'`) from the raw `BookingStatus` code  
 ---
 
 ## How to Run
