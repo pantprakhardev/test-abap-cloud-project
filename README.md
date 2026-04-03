@@ -12,6 +12,7 @@ semantic annotations, arithmetic expressions, and ABAP class consumption.
 | `ZCDS_BASIC_VIEW_01` | CDS View | Built over `/dmo/booking_m` with association to `/dmo/flight` |
 | `ZCLASS_BASIC_VIEW_01` | ABAP Class | Consumes the CDS view; run via `F9` in Eclipse ADT |
 | `ZI_BOOKING_VIEW` | CDS View Entity | Improved booking view — modern `root view entity` syntax with parameter, association, and inline CASE |
+| `ZC_BOOKING_VIEW` | CDS Consumption View | Built on `ZI_BOOKING_VIEW`; adds `@UI` annotations for Fiori Elements |
 
 ---
 
