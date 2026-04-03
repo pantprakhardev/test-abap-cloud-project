@@ -43,7 +43,8 @@ CLASS zclass_basic_view_01 IMPLEMENTATION.
 *        ENDIF.
 *"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Consuming root CDS view with association & parameters
         SELECT BookingId, BookingDate, BookingStatus, FlightDate, CurrencyCode, FlightPrice, SeatsMax, SeatsOccupied, SeatsAvailable
-        FROM zi_booking_view( p_currcode = 'JPY' )
+*        FROM zi_booking_view( p_currcode = 'JPY' )
+        FROM zi_booking_view
         INTO TABLE @DATA(lt_root_view).
 *""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
       CATCH cx_sy_open_sql_error INTO DATA(lo_sql_error).

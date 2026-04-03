@@ -9,8 +9,9 @@
   title:          { value: 'BookingId' }
 }
 
-define view entity ZC_BOOKING_VIEW
-  as select from ZI_BOOKING_VIEW
+define root view entity ZC_BOOKING_VIEW
+  provider contract transactional_query // Projection for business services (read / CRUD / Fiori Elements)
+  as projection on ZI_BOOKING_VIEW
 {
       @UI.lineItem: [{ position: 10 }]
   key TravelId,

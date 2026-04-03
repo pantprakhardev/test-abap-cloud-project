@@ -1,0 +1,4 @@
+@EndUserText.label: 'Booking Data Service'
+define service ZSRV_BOOKING {
+  expose ZC_BOOKING_VIEW as Bookings;
+}
