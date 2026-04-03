@@ -2,8 +2,8 @@
 @EndUserText.label: 'Basic view for Booking & Flight data'
 @Metadata.ignorePropagatedAnnotations: true
 define root view entity ZI_BOOKING_VIEW
-  with parameters
-    p_currcode : /dmo/currency_code
+  //  with parameters
+  //    p_currcode : /dmo/currency_code
   as select from /dmo/booking_m as booking
   association [1..1] to /dmo/flight as _flight on  booking.carrier_id    = _flight.carrier_id
                                                and booking.connection_id = _flight.connection_id
@@ -29,5 +29,5 @@ define root view entity ZI_BOOKING_VIEW
       _flight.seats_occupied                     as SeatsOccupied,
       _flight.seats_max - _flight.seats_occupied as SeatsAvailable // Derived Column
 }
-where
-  currency_code = $parameters.p_currcode;
+//where
+//  currency_code = $parameters.p_currcode;
