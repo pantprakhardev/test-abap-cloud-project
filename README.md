@@ -11,6 +11,7 @@ semantic annotations, arithmetic expressions, and ABAP class consumption.
 |---|---|---|
 | `ZCDS_BASIC_VIEW_01` | CDS View | Built over `/dmo/booking_m` with association to `/dmo/flight` |
 | `ZCLASS_BASIC_VIEW_01` | ABAP Class | Consumes the CDS view; run via `F9` in Eclipse ADT |
+| `ZI_BOOKING_VIEW` | CDS View Entity | Improved booking view — modern `root view entity` syntax with parameter, association, and inline CASE |
 
 ---
 
@@ -24,12 +25,14 @@ semantic annotations, arithmetic expressions, and ABAP class consumption.
 - **WHERE in CDS** *(commented)* — Filter can be pushed into the view definition itself
   (e.g. `WHERE country_code = $parameters.p_ccode` or hardcoded `= 'US'`),
   rather than in the consuming ABAP SELECT
-- **CASE expression** — Derives a readable `BookingStatus` (e.g. `'Booked'`, `'Not Booked'`) from the raw `BookingStatus` code  
+- **CASE expression** — Derives a readable `BookingStatus` (e.g. `'Booked'`, `'Not Booked'`) from the raw `BookingStatus` code
+- **`define root view entity`** — Modern ABAP Cloud compliant syntax; replaces classic
+  `define view` and no longer requires `@AbapCatalog.sqlViewName` annotation
 ---
 
 ## How to Run
 
-1. Pull repo into your ABAP Cloud Project via **abapGit** in Eclipse ADT []([https://help.sap.com/docs/abap-cloud/abap-cds-tools-user-guide](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/30-development/import-content-from-abapgit-repository-into-the-abap-environment-0b0d894.md))
+1. [Pull repo into your ABAP Cloud Project via **abapGit** in Eclipse ADT]([https://help.sap.com/docs/abap-cloud/abap-cds-tools-user-guide](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/30-development/import-content-from-abapgit-repository-into-the-abap-environment-0b0d894.md))
 2. Activate both objects
 3. Open `ZCLASS_BASIC_VIEW_01` → press **`F9`**
 4. View output in the **Console** tab
