@@ -27,20 +27,24 @@ CLASS zclass_basic_view_01 IMPLEMENTATION.
 *
 *    out->write( lt_params ).
 *"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Consuming basic CDS view with association
-*    SELECT BookingId, BookingDate, FlightDate, FlightPrice
+**    SELECT BookingId, BookingDate, FlightDate, FlightPrice
+*        SELECT BookingId, BookingDate, BookingStatus, FlightDate, CurrencyCode, FlightPrice, SeatsMax, SeatsOccupied, SeatsAvailable
+*        FROM zcds_basic_view_01
+**    WHERE BookingDate GT @sy-datum " sy-datum is old variant - outdated in ABAP Cloud
+*        WHERE BookingDate GT @( cl_abap_context_info=>get_system_date( ) )
+*        AND CurrencyCode = 'INR'
+*        ORDER BY BookingDate
+*        INTO TABLE @DATA(lt_asso).
+*
+*        IF lt_asso IS NOT INITIAL.
+*          out->write( lt_asso ).
+*        ELSE.
+*          out->write( 'No Records Found!' ).
+*        ENDIF.
+*"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" Consuming root CDS view with association & parameters
         SELECT BookingId, BookingDate, BookingStatus, FlightDate, CurrencyCode, FlightPrice, SeatsMax, SeatsOccupied, SeatsAvailable
-        FROM zcds_basic_view_01
-*    WHERE BookingDate GT @sy-datum " sy-datum is old variant - outdated in ABAP Cloud
-        WHERE BookingDate GT @( cl_abap_context_info=>get_system_date( ) )
-        AND CurrencyCode = 'INR'
-        ORDER BY BookingDate
-        INTO TABLE @DATA(lt_asso).
-
-        IF lt_asso IS NOT INITIAL.
-          out->write( lt_asso ).
-        ELSE.
-          out->write( 'No Records Found!' ).
-        ENDIF.
+        FROM zi_booking_view( p_currcode = 'JPY' )
+        INTO TABLE @DATA(lt_root_view).
 *""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
       CATCH cx_sy_open_sql_error INTO DATA(lo_sql_error).
         out->write( lo_sql_error->get_text(  ) ).
