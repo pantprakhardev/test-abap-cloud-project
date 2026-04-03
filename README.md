@@ -32,7 +32,7 @@ semantic annotations, arithmetic expressions, and ABAP class consumption.
 
 ## How to Run
 
-1. [Pull repo into your ABAP Cloud Project via **abapGit** in Eclipse ADT]([https://help.sap.com/docs/abap-cloud/abap-cds-tools-user-guide](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/30-development/import-content-from-abapgit-repository-into-the-abap-environment-0b0d894.md))
+1. [Pull repo into your ABAP Cloud Project via **abapGit** in Eclipse ADT](https://github.com/SAP-docs/btp-cloud-platform/blob/main/docs/30-development/import-content-from-abapgit-repository-into-the-abap-environment-0b0d894.md)
 2. Activate both objects
 3. Open `ZCLASS_BASIC_VIEW_01` → press **`F9`**
 4. View output in the **Console** tab
