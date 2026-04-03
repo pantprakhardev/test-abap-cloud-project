@@ -13,6 +13,8 @@ semantic annotations, arithmetic expressions, and ABAP class consumption.
 | `ZCLASS_BASIC_VIEW_01` | ABAP Class | Consumes the CDS view; run via `F9` in Eclipse ADT |
 | `ZI_BOOKING_VIEW` | CDS View Entity | Improved booking view — modern `root view entity` syntax with parameter, association, and inline CASE |
 | `ZC_BOOKING_VIEW` | CDS Consumption View | Built on `ZI_BOOKING_VIEW`; adds `@UI` annotations for Fiori Elements |
+| `ZSRV_BOOKING` | Service Definition | Exposes booking data for UI consumption |
+| `ZSRB_BOOKING` | Service Binding (OData V2 - UI) | Publishes the service to test over browser |
 
 ---
 
@@ -29,6 +31,11 @@ semantic annotations, arithmetic expressions, and ABAP class consumption.
 - **CASE expression** — Derives a readable `BookingStatus` (e.g. `'Booked'`, `'Not Booked'`) from the raw `BookingStatus` code
 - **`define root view entity`** — Modern ABAP Cloud compliant syntax; replaces classic
   `define view` and no longer requires `@AbapCatalog.sqlViewName` annotation
+- **UI Annotations** — Defines how the data is rendered and interacted with in Fiori Elements
+- **Projection View** — `AS PROJECTION ON` represents how the data is exposed for consumption
+- **Service Definition** — Exposes the projection view as an OData entity set
+- **Service Binding** — Connects a service definition to a concrete runtime protocol &
+  enables actual consumption by UIs or external clients
 ---
 
 ## How to Run
