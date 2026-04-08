@@ -116,7 +116,7 @@
               "navigation": {
                 "ZC_BOOKING_VIEW": {
                   "detail": {
-                    "route": "ZC_BOOKING_VIEWObjectPage"
+                    "route": ""
                   }
                 }
               },
